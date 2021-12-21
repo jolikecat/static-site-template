@@ -1,4 +1,3 @@
-const gulp = require('gulp');
 const nunjucksRender = require('gulp-nunjucks-render');
 const data = require('gulp-data');
 const sass = require('gulp-sass')(require('sass'));
@@ -14,6 +13,8 @@ const mode = require('gulp-mode')({
 });
 const fs = require('fs');
 
+const { watch, series, task, src, dest, parallel } = require('gulp');
+
 const paths = {
   'root' : './dist/',
   'template' : './templates/',
@@ -27,16 +28,14 @@ const paths = {
   'publicSrc' : './public/**',
 }
 
-const { watch, series, task, src, dest, parallel } = require('gulp');
-
 // nunjucks
 
 function gulpNunjucks() {
-  return gulp.src(paths.njkSrc)
+  return src(paths.njkSrc)
   .pipe(nunjucksRender({
     path: paths.template
   }))
-  .pipe(gulp.dest(paths.root))
+  .pipe(dest(paths.root))
 };
 
 //sass
@@ -70,7 +69,7 @@ function gulpBabel() {
     src(paths.jsSrc)
     .pipe(babel(
       {
-       presets: ['@babel/env']
+        presets: ['@babel/env']
       }
     ))
     .pipe(gulp.dest(paths.jsDist))
@@ -108,19 +107,19 @@ function serve (cb) {
 };
 
 // browser-sync reload
-function reload(done) {
+function reload(cb) {
   browserSync.reload();
-  done();
+  cb();
 };
 
 //watch
-function gulpWatch(done) {
+function gulpWatch(cb) {
   watch([paths.njkSrc], series(gulpNunjucks, reload));
   watch([paths.cssSrc], gulpSass);
   watch([paths.jsSrc], series(gulpBabel, reload));
   watch([paths.imgSrc], series(imgCopy, reload));
   watch([paths.publicSrc], series(publicCopy, reload));
-  done();
+  cb();
 };
 
 function clean(cb) {

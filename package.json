@@ -26,10 +26,9 @@
     "sanitize.css": "^13.0.0"
   },
   "browserslist": [
-    "last 2 versions",
-    "ie 11"
+    "defaults"
   ],
   "volta": {
-		"node": "16.13.0"
-	}
+    "node": "16.13.1"
+  }
 }
