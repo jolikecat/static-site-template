@@ -18,7 +18,7 @@
     "gulp-nunjucks-render": "2.2.3",
     "gulp-plumber": "1.2.1",
     "gulp-postcss": "9.0.1",
-    "gulp-sass": "5.0.0",
+    "gulp-sass": "5.1.0",
     "postcss": "8.4.1",
     "sass": "1.43.5"
   },
