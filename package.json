@@ -20,7 +20,7 @@
     "gulp-postcss": "9.0.1",
     "gulp-sass": "5.1.0",
     "postcss": "8.4.5",
-    "sass": "1.48.0"
+    "sass": "1.49.0"
   },
   "dependencies": {
     "core-js": "3.20.3",
