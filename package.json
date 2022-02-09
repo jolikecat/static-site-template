@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build",
-    "serve": "gulp serve"
+    "serve": "gulp serve",
+    "webpack": "webpack"
   },
   "devDependencies": {
     "@babel/core": "7.17.2",
@@ -20,7 +21,9 @@
     "gulp-postcss": "9.0.1",
     "gulp-sass": "5.1.0",
     "postcss": "8.4.6",
-    "sass": "1.49.7"
+    "sass": "1.49.7",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2"
   },
   "dependencies": {
     "core-js": "3.21.0",
