@@ -17,9 +17,24 @@ const entryObj = Object.fromEntries(entries);
 
 module.exports = {
   entry: entryObj,
-  
   output: {
     path: path.join(__dirname, "dist/assets/scripts"),
     filename: "[name]",
   },
+
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        default: false,
+				defaultVendors: false,
+        vendors: {
+          minSize: 0,
+          name: 'vendors',
+          test: /node_modules/,
+        }
+      }
+    }
+  }
 };
