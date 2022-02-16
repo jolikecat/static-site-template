@@ -15,7 +15,8 @@
     {
 			"matchPackagePatterns": ["*"],
 			"matchUpdateTypes": ["minor", "patch"],
-			"matchDepTypes": ["devDependencies"]
+			"matchDepTypes": ["devDependencies"],
+      "automerge": true
 		}
   ]
 }
