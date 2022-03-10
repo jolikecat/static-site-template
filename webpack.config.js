@@ -16,14 +16,43 @@ const entries = glob
 const entryObj = Object.fromEntries(entries);
 
 module.exports = {
+  mode: 'development',
   entry: entryObj,
   output: {
     path: path.join(__dirname, "dist/assets/scripts"),
     filename: "[name]",
   },
 
+  module: {
+		rules: [
+			{
+				test: /\.js$/,
+				use: [
+					{
+						loader: 'babel-loader',
+						options: {
+              presets: [
+                "@babel/preset-env",
+              ],
+						},
+					},
+				],
+			},
+		],
+	},
+
+  target: ["web", "es5"],
+
+  resolve: {
+		alias: {
+			'~': __dirname,
+		},
+	},
+
   optimization: {
-    runtimeChunk: 'single',
+    runtimeChunk: {
+      name: 'runtime.js',
+    },
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
@@ -31,7 +60,7 @@ module.exports = {
 				defaultVendors: false,
         vendors: {
           minSize: 0,
-          name: 'vendors',
+          name: 'vendors.js',
           test: /node_modules/,
         }
       }
