@@ -27,7 +27,7 @@
     "webpack-stream": "7.0.0"
   },
   "dependencies": {
-    "core-js": "3.22.2",
+    "core-js": "3.22.3",
     "sanitize.css": "13.0.0"
   },
   "browserslist": [
