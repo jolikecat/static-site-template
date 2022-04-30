@@ -8,7 +8,7 @@ const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const plumber = require('gulp-plumber');
 
-const browserSync = require('browser-sync').create();
+const common = require('../common');
 
 module.exports = function gulpSass() {
     return (
@@ -28,6 +28,6 @@ module.exports = function gulpSass() {
         })
     ]))
         .pipe(dest(path.join(paths.dist.root, 'assets/styles/')))
-        .pipe(browserSync.stream())
+        .pipe(common.server.stream())
     );
 };

@@ -1,14 +1,14 @@
-const browserSync = require('browser-sync').create();
+const common = require('../common');
 
 module.exports = function serve (cb) {
-    browserSync.init(
+    common.server.init(
         {
         open: false,
-        server: {
-            baseDir: './dist/'
+        server: './dist/',
+        startPath: '/',
+        ui: false,
+        notify: true
         },
-        startPath: ''
-        },
-        cb
+        cb,
     );
 };

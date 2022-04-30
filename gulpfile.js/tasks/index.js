@@ -1,7 +1,7 @@
 const paths = require('./paths');
 
 const { watch, series, task, src, dest, parallel } = require('gulp');
-const browserSync = require('browser-sync').create();
+const common = require('../common');
 const mode = require('gulp-mode')({
   modes: ["production", "development"],
   default: "development",
@@ -18,7 +18,7 @@ const serve = require('./serve');
 
 // browser-sync reload
 function reload(cb) {
-  browserSync.reload();
+  common.server.reload();
   cb();
 };
 
